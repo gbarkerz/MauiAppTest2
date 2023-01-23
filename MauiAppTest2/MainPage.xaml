@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiAppTest2"             
+             x:Class="MauiAppTest2.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:TestViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid Margin="10">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <CollectionView Grid.Row="0" x:Name="TestCollectionView"
+                HeightRequest="400" VerticalOptions="Start" HorizontalOptions="Start"
+                SemanticProperties.Description="Birds"
+                ItemsSource="{Binding TestListCollection}">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        
+                        <StackLayout>
+                            <!-- This flyout is invokable witha mouse right button click, or touch long press.
+                                The flyout does not appear following a two-finger double-tap gesture using 
+                                Narrator touch. -->
+                            <FlyoutBase.ContextFlyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="Flyout Test" />
+                                </MenuFlyout>
+                            </FlyoutBase.ContextFlyout>
+
+                            <Label Text="{Binding Name, Mode=OneWay}" />
+                        </StackLayout>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Grid.Row="1" Text="Change CollectionView Span" Clicked="Button_Clicked" />
+        </Grid>
+        
+    </Grid>
+
+</ContentPage>
