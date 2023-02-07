@@ -24,8 +24,10 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         
-                        <StackLayout>
-                            <!-- This flyout is invokable witha mouse right button click, or touch long press.
+                        <StackLayout 
+                            SemanticProperties.Description="Wallace"
+                            SemanticProperties.Hint="Gromit">
+                            <!-- This flyout is invokable with a mouse right button click, or touch long press.
                                 The flyout does not appear following a two-finger double-tap gesture using 
                                 Narrator touch. -->
                             <FlyoutBase.ContextFlyout>
